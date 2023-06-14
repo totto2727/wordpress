@@ -3,10 +3,12 @@ FROM php:5.6-apache
 # install the PHP extensions we need
 RUN set -ex; \
 	\
+  echo "deb http://archive.debian.org/debian/ stretch main" > /etc/apt/sources.list \
+    && echo "deb http://archive.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list &&\
 	apt-get update; \
 	apt-get install -y \
 		libjpeg-dev \
-		libpng12-dev \
+    libpng-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
